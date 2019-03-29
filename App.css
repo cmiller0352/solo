@@ -1,0 +1,7 @@
+.overlay{
+  position: absolute;
+  top: 9em;
+  left: 7em;
+  object-fit: contain;
+  max-height: 12.5em;
+  }
