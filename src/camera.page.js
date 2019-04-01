@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Camera, Permissions } from 'expo';
 import Toolbar from './toolbar.component';
 import Gallery from './gallery.component';
@@ -9,40 +9,22 @@ export default class CameraPage extends React.Component {
     camera = null;
     state = {
         captures: [],
-        flashMode: null,
         capturing: null,
         cameraType: null,
         hasCameraPermission: null,
     };
 
-    setFlashMode = (flashMode) => this.setState({ flashMode });
     setCameraType = (cameraType) => this.setState({ cameraType });
-    handleCaptureIn = () => this.setState({ capturing: true });
-
-    handleCaptureOut = () => {
-      if (this.state.capturing)
-          this.camera.stopRecording();
-    };
 
     handleShortCapture = async () => {
       const photoData = await this.camera.takePictureAsync();
       this.setState({ capturing: false, captures: [photoData, ...this.state.captures] })
     };
 
-    handleLongCapture = async () => {
-        const videoData = await this.camera.recordAsync();
-        this.setState({ capturing: false, captures: [videoData, ...this.state.captures] });
-    };
-
-
-
-
 
     async componentDidMount() {
         const camera = await Permissions.askAsync(Permissions.CAMERA);
-        const audio = await Permissions.askAsync(Permissions.AUDIO_RECORDING);
-        const hasCameraPermission = (camera.status === 'granted' && audio.status === 'granted');
-
+        const hasCameraPermission = (camera.status === 'granted'); 
         this.setState({ hasCameraPermission });
     };
 
@@ -56,28 +38,21 @@ export default class CameraPage extends React.Component {
         }
 
         return (
-          <React.Fragment>
-                <View>
-                    <Camera
-                        style={styles.preview}
-                        ref={camera => this.camera = camera}
+        <React.Fragment>
+            <View style={{ alignItems:"center", height: 1000, paddingTop:180 }}>
+                <Camera
+                    style={styles.preview}
+                    ref={camera => this.camera = camera}
+                />
+                    <Image source={require('./Morel.png')} 
+                    style={{width: '40%', height: '40%' }}
                     />
-                </View>
-
+            </View>
                 {captures.length > 0 && <Gallery captures={captures}/>}
-
-
-                <Toolbar capturing={capturing}
-                    flashMode={flashMode}
-                    cameraType={cameraType}
-                    setFlashMode={this.setFlashMode}
-                    setCameraType={this.setCameraType}
-                    onCaptureIn={this.handleCaptureIn}
-                    onCaptureOut={this.handleCaptureOut}
-                    onLongCapture={this.handleLongCapture}
+                    <Toolbar capturing={capturing}
                     onShortCapture={this.handleShortCapture}
                     />
-            </React.Fragment>
+        </React.Fragment>
         );
     };
 };

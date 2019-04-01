@@ -15,3 +15,6 @@ export default ({captures=[]}) => (
         ))}
     </ScrollView>
 );
+
+// the logic is above that has the info for where images reside in state
+// in captures = [] and uri?

@@ -4,6 +4,8 @@
     "slug": "my-new-project",
     "privacy": "public",
     "sdkVersion": "32.0.0",
+    "facebookScheme": "fb1281701371968076",
+    "facebookDisplayName": "morel",
     "platforms": [
       "ios",
       "android"
