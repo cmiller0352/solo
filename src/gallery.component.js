@@ -3,6 +3,7 @@ import { View, Image, ScrollView } from 'react-native';
 import styles from './styles';
 
 
+
 export default ({captures=[]}) => (
     <ScrollView 
         horizontal={true}
@@ -16,5 +17,3 @@ export default ({captures=[]}) => (
     </ScrollView>
 );
 
-// the logic is above that has the info for where images reside in state
-// in captures = [] and uri?

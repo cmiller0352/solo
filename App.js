@@ -1,36 +1,75 @@
 import React from 'react';
-import { View } from 'react-native';
-import HomePage from './src/homepage';
+import { View, Text, StyleSheet, Button } from 'react-native';
+// import HomePage from './src/homeAlt';
 import FBLoginButton from './src/FBLoginButton';
-import App1 from './App1'
-import CameraPage from './src/camera.page.js'
-import { Camera, Permissions } from 'expo';
+import LoginPage from './components/LoginPage';
+import HomePage from './components/HomePage';
+import Map from './components/Map';
+import App4 from './components/App4';
+import Camera1 from './components/Camera';
+import CameraPage from './src/camera.page.js';
+// import { Camera, Permissions } from 'expo';
+import { createStackNavigator, createAppContainer} from 'react-navigation';
+import { useScreens } from 'react-native-screens';
+import { Constants } from 'expo';
+useScreens();
 
-export default class App extends React.Component {
+const Rootstack = createStackNavigator( {
+  // App: App,
+  LoginPage: LoginPage,
+  HomePage: HomePage,
+  Camera: CameraPage,
+  // Map: Map,
+} )
+  class App extends React.Component {
+    static navigationOptions = {
+      title: 'anything',
+    }
+    onPress = () => {
+      this.props.navigation.push('LoginPage');
+      /* this.props.navigation.navigate('HomeScreen'); */
+    };
+
+
     render() {
         return (
-          // <View>
-          //   <App1 />
-          //   <FBLoginButton />
-          // </View>
-          <CameraPage />
+          <View>
+            <Rootstack />
+          </View>
+          // <CameraPage />
         );
     };
 };
 
+const NavigationApp = createAppContainer(Rootstack);
+export default NavigationApp;
+// export default App;
 
 
 
 
 
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    padding: 8,
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
 
 
 
 
 // import React from 'react';
 // import { Text, SafeAreaView } from 'react-native';
-// import Map from './src/Map.js';
+// import Map from './components/Map';
 // import { Location, Permissions } from 'expo';
 // import { Marker } from 'react-native-maps';
 

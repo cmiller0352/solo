@@ -5,7 +5,8 @@ import { View, TouchableWithoutFeedback } from 'react-native';
 
 import styles from './styles';
 
-const { FlashMode: CameraFlashModes, Type: CameraTypes } = Camera.Constants;
+// below only useful if selfie cam or flash is desired. There is a lot more features available to the camera than these
+// const { FlashMode: CameraFlashModes, Type: CameraTypes } = Camera.Constants;
 
 export default ({ 
     capturing = false, 

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.1",
+    "aws-sdk": "^2.433.0",
     "expo": "^32.0.0",
     "object-fit-images": "^3.2.4",
     "react": "16.5.0",
@@ -16,6 +17,7 @@
     "react-native-easy-grid": "^0.2.1",
     "react-native-fbsdk": "^0.8.0",
     "react-native-video": "^4.4.0",
+    "react-navigation": "^3.6.1",
     "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
