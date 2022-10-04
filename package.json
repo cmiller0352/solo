@@ -9,7 +9,7 @@
   "dependencies": {
     "@expo/vector-icons": "^10.0.1",
     "aws-sdk": "^2.433.0",
-    "expo": "^32.0.0",
+    "expo": "^46.0.14",
     "object-fit-images": "^3.2.4",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
